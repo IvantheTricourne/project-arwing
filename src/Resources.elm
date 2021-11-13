@@ -5,9 +5,9 @@ import Types exposing (..)
 
 charIconPath : Character -> String
 charIconPath character =
-    "../rsrc/Characters/Stock Icons/" ++ characterToString character ++ "/Default.png"
+    "rsrc/Characters/Stock Icons/" ++ characterToString character ++ "/Default.png"
 
 
 stageImgPath : Stage -> String
 stageImgPath stage =
-    "../rsrc/Stages/Icons/" ++ stageToString stage ++ ".png"
+    "rsrc/Stages/Icons/" ++ stageToString stage ++ ".png"

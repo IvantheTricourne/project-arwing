@@ -1,7 +1,6 @@
 port module Main exposing (..)
 
 import Browser
-import Debug exposing (toString)
 import Dict
 import Element exposing (..)
 import Element.Background as Background
@@ -568,7 +567,7 @@ viewKillPcts stage char =
                                     []
                                     [ text moveName
                                     , text " "
-                                    , el [ Font.italic ] (text <| toString killpct ++ "%")
+                                    , el [ Font.italic ] (text <| String.fromInt killpct ++ "%")
                                     ]
                             )
                             (Dict.toList killPcts)
