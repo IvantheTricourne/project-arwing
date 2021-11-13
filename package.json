@@ -1,0 +1,11 @@
+{
+  "name": "arwing",
+  "version": "1.0.0",
+  "description": "Some useful things for SSBM Fox mains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
