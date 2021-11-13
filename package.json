@@ -4,8 +4,18 @@
   "description": "Some useful things for SSBM Fox mains",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "elm": "elm make src/Main.elm --output index.js --optimize || true",
+    "elm:live": "elm-live src/Main.elm --open -- --output index.js --optimize || true",
+    "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
+    "start": "npm run elm & electron main.js",
+    "watch": "npm run start & npm run elm:watch & wait"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chokidar-cli": "^3.0.0",
+    "elm": "^0.19.1-5",
+    "elm-live": "^4.0.2"
+  }
 }
