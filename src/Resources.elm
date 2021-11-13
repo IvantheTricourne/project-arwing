@@ -1,10 +1,10 @@
 module Resources exposing (..)
 
-import Types exposing (Stage, stageToString)
+import Types exposing (..)
 
-charIconPath : String -> String
-charIconPath characterName =
-    "../rsrc/Characters/Stock Icons/" ++ characterName ++ "/Default.png"
+charIconPath : Character -> String
+charIconPath character =
+    "../rsrc/Characters/Stock Icons/" ++ characterToString character ++ "/Default.png"
 
 stageImgPath : Stage -> String
 stageImgPath stage =

@@ -66,6 +66,36 @@ type Character
   | YoungLink
   | Zelda
 
+characterToString : Character -> String
+characterToString character =
+  case character of
+    Bowser -> "Bowser"
+    CaptainFalcon -> "Captain Falcon"
+    DonkeyKong -> "Donkey Kong"
+    DrMario -> "Dr. Mario"
+    Falco -> "Falco"
+    Fox -> "Fox"
+    Ganondorf -> "Ganondorf"
+    IceClimbers -> "Ice Climbers"
+    JigglyPuff -> "Jigglypuff"
+    Kirby -> "Kirby"
+    Link -> "Link"
+    Luigi -> "Luigi"
+    Mario -> "Mario"
+    Marth -> "Marth"
+    Mewtwo -> "Mewtwo"
+    MrGameAndWatch -> "Mr. Game & Watch"
+    Ness -> "Ness"
+    Peach -> "Peach"
+    Pichu -> "Pichu"
+    Pikachu -> "Pikachu"
+    Roy -> "Roy"
+    Samus -> "Samus"
+    Sheik -> "Sheik"
+    Yoshi -> "Yoshi"
+    YoungLink -> "Young Link"
+    Zelda -> "Zelda"
+
 characterToInt : Character -> Int
 characterToInt character =
   case character of

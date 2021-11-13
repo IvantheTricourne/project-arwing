@@ -14,6 +14,7 @@ import Types
 import Resources
 import Types exposing (Stage(..))
 import Percents exposing (..)
+import Types exposing (Character(..))
 
 -- model
 
@@ -79,6 +80,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage Battlefield
         , scale 1.1
         , padding 1
         ]
@@ -89,6 +91,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage Dreamland
         , scale 1.1
         , padding 1
         ]
@@ -99,6 +102,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage FinalDestination
         , scale 1.1
         , padding 1
         ]
@@ -114,6 +118,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage FountainOfDreams
         , scale 1.1
         , padding 1
         ]
@@ -124,6 +129,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage PokemonStadium
         , scale 1.1
         , padding 1
         ]
@@ -134,6 +140,7 @@ viewStageSelect model =
         [ Background.color white
         , Font.color white 
         , Border.rounded 3
+        , Events.onClick <| SelectStage YoshisStory
         , scale 1.1
         , padding 1
         ]
@@ -144,12 +151,313 @@ viewStageSelect model =
     ]
 
 viewCharacterSelect stage model = 
-  row [ centerX
-      , centerY
-      , spacing 3
+  column 
+    [ centerX
+    , centerY
+    , spacing 20
+    ]
+    [ el
+      [ Font.extraBold
+      , Font.color white
+      , centerX
+      , above <|
+          el
+              [ centerX
+              , Font.italic
+              , moveDown 10
+              ]
+              (text "Choose a character")
       ]
-      [
+      (text "______________________")
+    , row
+      [ spacing 10
+      , centerX
+      ] 
+      [ image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath DrMario
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Mario
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Luigi
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Bowser
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Peach
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Yoshi
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath DonkeyKong
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath CaptainFalcon
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Ganondorf
+        , description = ""
+        }
       ]
+    , row
+      [ spacing 10
+      , centerX
+      ] 
+      [ image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Falco
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Fox
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Ness
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath IceClimbers
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Kirby
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Samus
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Zelda
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Link
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath YoungLink
+        , description = ""
+        }
+      ]
+    , row
+      [ spacing 10
+      , centerX
+      ] 
+      [ image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Pichu
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Pikachu
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath JigglyPuff
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Mewtwo
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath MrGameAndWatch
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Marth
+        , description = ""
+        }
+      , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , scale 1.1
+        , padding 1
+        ]
+        { src = Resources.charIconPath Roy
+        , description = ""
+        }
+      ]   
+    , image
+        [ Background.color white
+        , Font.color white 
+        , Border.rounded 3
+        , centerX
+        , scale 0.75
+        , padding 1
+        , inFront <|
+            el
+            [ Font.extraBold
+            , Background.color grey
+            , Border.rounded 3
+            , Events.onClick Reset
+            , alpha 0.65
+            , centerX
+            , centerY
+            , paddingXY 2 20
+            ]
+            (text "Reset")
+        ]
+        { src = Resources.stageImgPath stage
+        , description = Types.stageToString stage
+        }
+    ]
 
 black = rgb255 0 0 0
 white = rgb255 255 255 255
@@ -174,30 +482,6 @@ btnElement str msg =
                ]
   { onPress = Just msg
   , label = text str
-  }
-
-infoElement msg modelField =
-  Input.multiline [ Background.color white
-                  , Element.focused [ Background.color white
-                                    ]
-                  , Font.color grey
-                  , Font.extraBold
-                  , Font.center
-                  , Font.family [ Font.external
-                                 { name = "Roboto"
-                                 , url = "https://fonts.googleapis.com/css?family=Roboto"
-                                 }
-                                , Font.sansSerif
-                                ]
-                  , Font.size 28
-                  , Border.rounded 5
-                  , Border.color black
-                  ]
-  { onChange = msg
-  , text = modelField
-  , placeholder = Nothing
-  , label = Input.labelHidden ""
-  , spellcheck = False
   }
 
 -- local storage
