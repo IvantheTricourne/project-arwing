@@ -13,6 +13,7 @@ import Json.Encode as E
 import Types
 import Resources
 import Types exposing (Stage(..))
+import Percents exposing (..)
 
 -- model
 
