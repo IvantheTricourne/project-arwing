@@ -34,6 +34,7 @@ type alias Model =
 type Msg
     = SelectStage Types.Stage
     | SelectChar Types.Character
+    | NoOp
     | Reset
 
 
@@ -45,6 +46,9 @@ update msg model =
 
         SelectChar char ->
             ( { model | currentCharacter = Just char }, Cmd.none )
+
+        NoOp ->
+            ( model, Cmd.none )
 
         Reset ->
             ( { model | currentStage = Nothing, currentCharacter = Nothing }, Cmd.none )
@@ -89,6 +93,20 @@ view model =
 
 
 viewStageSelect model =
+    let
+        makeStageImg stage =
+            image
+                [ Background.color white
+                , Font.color white
+                , Border.rounded 3
+                , Events.onClick <| SelectStage stage
+                , scale 1.1
+                , padding 1
+                ]
+                { src = Resources.stageImgPath stage
+                , description = Types.stageToString stage
+                }
+    in
     column
         [ centerX
         , centerY
@@ -111,82 +129,36 @@ viewStageSelect model =
             [ spacing 10
             , centerX
             ]
-            [ image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage Battlefield
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath Battlefield
-                , description = "Battlefield"
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage Dreamland
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath Dreamland
-                , description = "Dreamland"
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage FinalDestination
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath FinalDestination
-                , description = "Final Destination"
-                }
+            [ makeStageImg Battlefield
+            , makeStageImg Dreamland
+            , makeStageImg FinalDestination
             ]
         , row
             [ spacing 10
             , centerX
             ]
-            [ image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage FountainOfDreams
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath FountainOfDreams
-                , description = "Fountain Of Dreams"
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage PokemonStadium
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath PokemonStadium
-                , description = "Pokémon Stadium"
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage YoshisStory
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath YoshisStory
-                , description = "Yoshi's Story"
-                }
+            [ makeStageImg FountainOfDreams
+            , makeStageImg PokemonStadium
+            , makeStageImg YoshisStory
             ]
         ]
 
 
 viewCharacterSelect stage =
+    let
+        makeCharImg char =
+            image
+                [ Background.color white
+                , Font.color white
+                , Border.rounded 3
+                , Events.onClick <| SelectChar char
+                , scale 1.1
+                , padding 1
+                ]
+                { src = Resources.charIconPath char
+                , description = Types.characterToString char
+                }
+    in
     column
         [ centerX
         , centerY
@@ -209,291 +181,42 @@ viewCharacterSelect stage =
             [ spacing 10
             , centerX
             ]
-            [ image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar DrMario
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath DrMario
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Mario
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Mario
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Luigi
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Luigi
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Bowser
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Bowser
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Peach
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Peach
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Yoshi
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Yoshi
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar DonkeyKong
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath DonkeyKong
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar CaptainFalcon
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath CaptainFalcon
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Ganondorf
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Ganondorf
-                , description = ""
-                }
+            [ makeCharImg DrMario
+            , makeCharImg Mario
+            , makeCharImg Luigi
+            , makeCharImg Bowser
+            , makeCharImg Peach
+            , makeCharImg Yoshi
+            , makeCharImg DonkeyKong
+            , makeCharImg CaptainFalcon
+            , makeCharImg Ganondorf
             ]
         , row
             [ spacing 10
             , centerX
             ]
-            [ image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Falco
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Falco
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Fox
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Fox
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Ness
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Ness
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar IceClimbers
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath IceClimbers
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Kirby
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Kirby
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Samus
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Samus
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Zelda
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Zelda
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Link
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Link
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar YoungLink
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath YoungLink
-                , description = ""
-                }
+            [ makeCharImg Falco
+            , makeCharImg Fox
+            , makeCharImg Ness
+            , makeCharImg IceClimbers
+            , makeCharImg Kirby
+            , makeCharImg Samus
+            , makeCharImg Zelda
+            , makeCharImg Sheik
+            , makeCharImg Link
+            , makeCharImg YoungLink
             ]
         , row
             [ spacing 10
             , centerX
             ]
-            [ image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Pichu
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Pichu
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Pikachu
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Pikachu
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar JigglyPuff
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath JigglyPuff
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Mewtwo
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Mewtwo
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar MrGameAndWatch
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath MrGameAndWatch
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Marth
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Marth
-                , description = ""
-                }
-            , image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar Roy
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath Roy
-                , description = ""
-                }
+            [ makeCharImg Pichu
+            , makeCharImg Pikachu
+            , makeCharImg JigglyPuff
+            , makeCharImg Mewtwo
+            , makeCharImg MrGameAndWatch
+            , makeCharImg Marth
+            , makeCharImg Roy
             ]
         , image
             [ Background.color white
@@ -548,7 +271,7 @@ viewKillPcts stage char =
             , centerX
             ]
             { src = Resources.charIconPath char
-            , description = ""
+            , description = Types.characterToString char
             }
         , el
             [ Font.color white
