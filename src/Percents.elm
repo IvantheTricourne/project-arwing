@@ -39,7 +39,9 @@ battlefieldPcts =
           , [ ( "Up-Smash", 84 ) ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 82 ) ]
+          , [ ( "Up-Smash", 82 ) 
+            , ( "U-Air", 84 )
+            ]
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
@@ -172,7 +174,9 @@ finalDestinationPcts =
           , [ ( "Up-Smash", 72 ) ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 80 ) ]
+          , [ ( "Up-Smash", 80 ) 
+            , ( "U-Air", 79 )
+            ]
           )
         , ( Zelda
           , [ ( "Up-Smash", 70 ) ]
@@ -239,7 +243,9 @@ yoshisStoryPcts =
           , [ ( "Up-Smash", 68 ) ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 66 ) ]
+          , [ ( "Up-Smash", 74 ) 
+            , ( "U-Air", 75 )
+            ]
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
@@ -333,7 +339,9 @@ fountainOfDreamsPcts =
             ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 75 ) ]
+          , [ ( "Up-Smash", 83 ) 
+            , ( "U-Air", 85 )
+            ]
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 58 )
@@ -430,7 +438,9 @@ dreamlandPcts =
             ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 85 ) ]
+          , [ ( "Up-Smash", 94 ) 
+            , ( "U-Air", 101 )
+            ]
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 66 )
@@ -524,7 +534,9 @@ pokemonStadiumPcts =
             ]
           )
         , ( Peach
-          , [ ( "Up-Smash", 69 ) ]
+          , [ ( "Up-Smash", 78 ) 
+            , ( "U-Air", 78 )
+            ]
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 53 )
