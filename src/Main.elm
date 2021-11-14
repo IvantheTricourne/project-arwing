@@ -283,17 +283,18 @@ viewKillPcts stage char =
 
                 Just killPcts ->
                     column
-                        []
+                        [ spacing 5 ]
                         (L.map
                             (\( moveName, killpct ) ->
                                 row
-                                    []
-                                    [ text moveName
-                                    , text " "
-                                    , el [ Font.italic ] (text <| String.fromInt killpct ++ "%")
+                                    [ centerX
+                                    , spacing 10
+                                    ]
+                                    [ column [] [ text moveName ]
+                                    , column [ Font.italic ] [ text <| String.fromInt killpct ++ "%" ]
                                     ]
                             )
-                            (Dict.toList killPcts)
+                            (L.sortBy Tuple.second << Dict.toList <| killPcts)
                         )
             )
         , image
@@ -336,31 +337,6 @@ grey =
 
 red =
     rgb255 255 0 0
-
-
-btnElement str msg =
-    Input.button
-        [ Background.color black
-        , Element.focused
-            [ Background.color black
-            ]
-        , Element.mouseOver
-            [ Font.color white
-            ]
-        , Font.color black
-        , Font.semiBold
-        , Font.family
-            [ Font.external
-                { name = "Roboto"
-                , url = "https://fonts.googleapis.com/css?family=Roboto"
-                }
-            , Font.monospace
-            ]
-        , padding 10
-        ]
-        { onPress = Just msg
-        , label = text str
-        }
 
 
 
