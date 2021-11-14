@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="app/rsrc/icon.png" alt="Project Arwing Logo" width="150" height="150" />
+  <img src="logo.png" alt="Project Arwing Logo" width="150" height="150" />
 </p>
 <h1 align="center">Project Arwing</h1>
 
