@@ -8,22 +8,32 @@ battlefieldPcts : StageInfo
 battlefieldPcts =
     makeStageInfo
         [ ( Fox
-          , [ ( "Up-Smash", 89 ) ]
+          , [ ( "Up-Smash", 89 )
+            , ( "UT UA", 106 )
+            ]
           )
         , ( CaptainFalcon
-          , [ ( "Up-Smash", 105 ) ]
+          , [ ( "Up-Smash", 105 )
+            , ( "UT UA", 113 )
+            ]
           )
         , ( Falco
-          , [ ( "Up-Smash", 95 ) ]
+          , [ ( "Up-Smash", 95 )
+            , ( "UT UA", 116 )
+            ]
           )
         , ( Bowser
           , [ ( "Up-Smash", 95 ) ]
           )
         , ( Sheik
-          , [ ( "Up-Smash", 84 ) ]
+          , [ ( "Up-Smash", 84 )
+            , ( "UT UA", 88 )
+            ]
           )
         , ( Marth
-          , [ ( "Up-Smash", 82 ) ]
+          , [ ( "Up-Smash", 82 )
+            , ( "UT UA", 86 )
+            ]
           )
         , ( Pikachu
           , [ ( "Up-Smash", 84 ) ]
@@ -32,37 +42,61 @@ battlefieldPcts =
           , [ ( "Up-Smash", 82 ) ]
           )
         , ( JigglyPuff
-          , [ ( "Up-Smash", 57 ) ]
+          , [ ( "Up-Smash", 57 )
+            , ( "UT UA", 53 )
+            , ( "Up-tilt", 96 )
+            , ( "D-tilt", 116 )
+            , ( "B-Air", 119 )
+            , ( "FC US", 38 )
+            ]
           )
-        ]
-
-
-dreamlandPcts : StageInfo
-dreamlandPcts =
-    makeStageInfo
-        [ ( Fox
-          , [ ( "Up-Smash", 100 ) ]
+        , ( IceClimbers
+          , [ ( "Up-Smash", 75 ) ]
           )
-        , ( CaptainFalcon
-          , [ ( "Up-Smash", 118 ) ]
+        , ( Samus
+          , [ ( "Up-Smash", 82 ) ]
           )
-        , ( Falco
-          , [ ( "Up-Smash", 106 ) ]
+        , ( DrMario
+          , [ ( "Up-Smash", 82 ) ]
           )
-        , ( Bowser
-          , [ ( "Up-Smash", 108 ) ]
+        , ( Yoshi
+          , [ ( "Up-Smash", 89 ) ]
           )
-        , ( Sheik
-          , [ ( "Up-Smash", 95 ) ]
+        , ( Luigi
+          , [ ( "Up-Smash", 79 ) ]
           )
-        , ( Marth
+        , ( Ganondorf
           , [ ( "Up-Smash", 93 ) ]
           )
-        , ( Peach
-          , [ ( "Up-Smash", 85 ) ]
+        , ( Mario
+          , [ ( "Up-Smash", 82 ) ]
           )
-        , ( JigglyPuff
-          , [ ( "Up-Smash", 66 ) ]
+        , ( YoungLink
+          , [ ( "Up-Smash", 81 ) ]
+          )
+        , ( DonkeyKong
+          , [ ( "Up-Smash", 100 ) ]
+          )
+        , ( Link
+          , [ ( "Up-Smash", 91 ) ]
+          )
+        , ( MrGameAndWatch
+          , [ ( "Up-Smash", 62 ) ]
+          )
+        , ( Roy
+          , [ ( "Up-Smash", 80 ) ]
+          )
+        , ( Mewtwo
+          , [ ( "Up-Smash", 72 ) ]
+          )
+        , ( Zelda
+          , [ ( "Up-Smash", 73 ) ]
+          )
+        , ( Ness
+          , [ ( "Up-Smash", 81 ) ]
+          )
+        , ( Pichu
+          , [ ( "Up-Smash", 62 ) ]
           )
         ]
 
@@ -71,16 +105,22 @@ finalDestinationPcts : StageInfo
 finalDestinationPcts =
     makeStageInfo
         [ ( Fox
-          , [ ( "Up-Smash", 86 ) ]
+          , [ ( "Up-Smash", 86 )
+            , ( "UT UA", 103 )
+            ]
           )
         , ( CaptainFalcon
-          , [ ( "Up-Smash", 113 ) ]
+          , [ ( "Up-Smash", 113 )
+            , ( "UT UA", 108 )
+            ]
           )
         , ( DonkeyKong
           , [ ( "Up-Smash", 97 ) ]
           )
         , ( Falco
-          , [ ( "Up-Smash", 93 ) ]
+          , [ ( "Up-Smash", 93 )
+            , ( "UT UA", 111 )
+            ]
           )
         , ( Bowser
           , [ ( "Up-Smash", 102 ) ]
@@ -98,7 +138,9 @@ finalDestinationPcts =
           , [ ( "Up-Smash", 85 ) ]
           )
         , ( Sheik
-          , [ ( "Up-Smash", 81 ) ]
+          , [ ( "Up-Smash", 81 )
+            , ( "UT UA", 83 )
+            ]
           )
         , ( Mario
           , [ ( "Up-Smash", 79 ) ]
@@ -107,7 +149,9 @@ finalDestinationPcts =
           , [ ( "Up-Smash", 79 ) ]
           )
         , ( Marth
-          , [ ( "Up-Smash", 79 ) ]
+          , [ ( "Up-Smash", 79 )
+            , ( "UT UA", 80 )
+            ]
           )
         , ( Ness
           , [ ( "Up-Smash", 78 ) ]
@@ -119,7 +163,7 @@ finalDestinationPcts =
           , [ ( "Up-Smash", 78 ) ]
           )
         , ( Luigi
-          , [ ( "Up-Smash", 76 ) ]
+          , [ ( "Up-Smash", 77 ) ]
           )
         , ( Pikachu
           , [ ( "Up-Smash", 73 ) ]
@@ -146,67 +190,13 @@ finalDestinationPcts =
           , [ ( "Up-Smash", 60 ) ]
           )
         , ( JigglyPuff
-          , [ ( "Up-Smash", 55 ) ]
-          )
-        ]
-
-
-fountainOfDreamsPcts : StageInfo
-fountainOfDreamsPcts =
-    makeStageInfo
-        [ ( Fox
-          , [ ( "Up-Smash", 90 ) ]
-          )
-        , ( CaptainFalcon
-          , [ ( "Up-Smash", 106 ) ]
-          )
-        , ( Falco
-          , [ ( "Up-Smash", 96 ) ]
-          )
-        , ( Bowser
-          , [ ( "Up-Smash", 96 ) ]
-          )
-        , ( Sheik
-          , [ ( "Up-Smash", 85 ) ]
-          )
-        , ( Marth
-          , [ ( "Up-Smash", 82 ) ]
-          )
-        , ( Peach
-          , [ ( "Up-Smash", 75 ) ]
-          )
-        , ( JigglyPuff
-          , [ ( "Up-Smash", 58 ) ]
-          )
-        ]
-
-
-pokemonStadiumPcts : StageInfo
-pokemonStadiumPcts =
-    makeStageInfo
-        [ ( Fox
-          , [ ( "Up-Smash", 85 ) ]
-          )
-        , ( CaptainFalcon
-          , [ ( "Up-Smash", 99 ) ]
-          )
-        , ( Falco
-          , [ ( "Up-Smash", 91 ) ]
-          )
-        , ( Bowser
-          , [ ( "Up-Smash", 90 ) ]
-          )
-        , ( Sheik
-          , [ ( "Up-Smash", 79 ) ]
-          )
-        , ( Marth
-          , [ ( "Up-Smash", 77 ) ]
-          )
-        , ( Peach
-          , [ ( "Up-Smash", 69 ) ]
-          )
-        , ( JigglyPuff
-          , [ ( "Up-Smash", 53 ) ]
+          , [ ( "Up-Smash", 55 )
+            , ( "UT UA", 50 )
+            , ( "Up-tilt", 92 )
+            , ( "D-tilt", 113 )
+            , ( "B-Air", 121 )
+            , ( "FC US", 36 )
+            ]
           )
         ]
 
@@ -215,25 +205,35 @@ yoshisStoryPcts : StageInfo
 yoshisStoryPcts =
     makeStageInfo
         [ ( Fox
-          , [ ( "Up-Smash", 82 ) ]
+          , [ ( "Up-Smash", 82 )
+            , ( "UT UA", 96 )
+            ]
           )
         , ( CaptainFalcon
-          , [ ( "Up-Smash", 96 ) ]
+          , [ ( "Up-Smash", 96 )
+            , ( "UT UA", 100 )
+            ]
           )
         , ( DonkeyKong
           , [ ( "Up-Smash", 91 ) ]
           )
         , ( Falco
-          , [ ( "Up-Smash", 98 ) ]
+          , [ ( "Up-Smash", 98 )
+            , ( "UT UA", 105 )
+            ]
           )
         , ( Bowser
           , [ ( "Up-Smash", 96 ) ]
           )
         , ( Sheik
-          , [ ( "Up-Smash", 76 ) ]
+          , [ ( "Up-Smash", 76 )
+            , ( "UT UA", 77 )
+            ]
           )
         , ( Marth
-          , [ ( "Up-Smash", 73 ) ]
+          , [ ( "Up-Smash", 73 )
+            , ( "UT UA", 74 )
+            ]
           )
         , ( Pikachu
           , [ ( "Up-Smash", 68 ) ]
@@ -242,7 +242,346 @@ yoshisStoryPcts =
           , [ ( "Up-Smash", 66 ) ]
           )
         , ( JigglyPuff
-          , [ ( "Up-Smash", 57 ) ]
+          , [ ( "Up-Smash", 57 )
+            , ( "UT UA", 44 )
+            , ( "Up-tilt", 88 )
+            , ( "D-tilt", 105 )
+            , ( "B-Air", 110 )
+            , ( "FC US", 33 )
+            ]
+          )
+        , ( IceClimbers
+          , [ ( "Up-Smash", 67 ) ]
+          )
+        , ( Samus
+          , [ ( "Up-Smash", 73 ) ]
+          )
+        , ( DrMario
+          , [ ( "Up-Smash", 74 ) ]
+          )
+        , ( Yoshi
+          , [ ( "Up-Smash", 81 ) ]
+          )
+        , ( Luigi
+          , [ ( "Up-Smash", 71 ) ]
+          )
+        , ( Ganondorf
+          , [ ( "Up-Smash", 84 ) ]
+          )
+        , ( Mario
+          , [ ( "Up-Smash", 74 ) ]
+          )
+        , ( YoungLink
+          , [ ( "Up-Smash", 73 ) ]
+          )
+        , ( DonkeyKong
+          , [ ( "Up-Smash", 91 ) ]
+          )
+        , ( Link
+          , [ ( "Up-Smash", 83 ) ]
+          )
+        , ( MrGameAndWatch
+          , [ ( "Up-Smash", 56 ) ]
+          )
+        , ( Roy
+          , [ ( "Up-Smash", 77 ) ]
+          )
+        , ( Mewtwo
+          , [ ( "Up-Smash", 64 ) ]
+          )
+        , ( Zelda
+          , [ ( "Up-Smash", 65 ) ]
+          )
+        , ( Ness
+          , [ ( "Up-Smash", 73 ) ]
+          )
+        , ( Pichu
+          , [ ( "Up-Smash", 56 ) ]
+          )
+        ]
+
+
+fountainOfDreamsPcts : StageInfo
+fountainOfDreamsPcts =
+    makeStageInfo
+        [ ( Fox
+          , [ ( "Up-Smash", 90 )
+            , ( "UT UA", 107 )
+            ]
+          )
+        , ( CaptainFalcon
+          , [ ( "Up-Smash", 106 )
+            , ( "UT UA", 114 )
+            ]
+          )
+        , ( Falco
+          , [ ( "Up-Smash", 96 )
+            , ( "UT UA", 116 )
+            ]
+          )
+        , ( Bowser
+          , [ ( "Up-Smash", 96 ) ]
+          )
+        , ( Sheik
+          , [ ( "Up-Smash", 85 )
+            , ( "UT UA", 88 )
+            ]
+          )
+        , ( Marth
+          , [ ( "Up-Smash", 82 )
+            , ( "UT UA", 86 )
+            ]
+          )
+        , ( Peach
+          , [ ( "Up-Smash", 75 ) ]
+          )
+        , ( JigglyPuff
+          , [ ( "Up-Smash", 58 )
+            , ( "UT UA", 54 )
+            , ( "Up-tilt", 96 )
+            , ( "D-tilt", 114 )
+            , ( "B-Air", 119 )
+            , ( "FC US", 38 )
+            ]
+          )
+        , ( IceClimbers
+          , [ ( "Up-Smash", 79 ) ]
+          )
+        , ( Pikachu
+          , [ ( "Up-Smash", 76 ) ]
+          )
+        , ( Samus
+          , [ ( "Up-Smash", 82 ) ]
+          )
+        , ( DrMario
+          , [ ( "Up-Smash", 83 ) ]
+          )
+        , ( Yoshi
+          , [ ( "Up-Smash", 90 ) ]
+          )
+        , ( Luigi
+          , [ ( "Up-Smash", 80 ) ]
+          )
+        , ( Ganondorf
+          , [ ( "Up-Smash", 93 ) ]
+          )
+        , ( Mario
+          , [ ( "Up-Smash", 83 ) ]
+          )
+        , ( YoungLink
+          , [ ( "Up-Smash", 82 ) ]
+          )
+        , ( DonkeyKong
+          , [ ( "Up-Smash", 101 ) ]
+          )
+        , ( Link
+          , [ ( "Up-Smash", 92 ) ]
+          )
+        , ( MrGameAndWatch
+          , [ ( "Up-Smash", 63 ) ]
+          )
+        , ( Roy
+          , [ ( "Up-Smash", 86 ) ]
+          )
+        , ( Mewtwo
+          , [ ( "Up-Smash", 72 ) ]
+          )
+        , ( Zelda
+          , [ ( "Up-Smash", 73 ) ]
+          )
+        , ( Ness
+          , [ ( "Up-Smash", 81 ) ]
+          )
+        , ( Pichu
+          , [ ( "Up-Smash", 63 ) ]
+          )
+        ]
+
+
+dreamlandPcts : StageInfo
+dreamlandPcts =
+    makeStageInfo
+        [ ( Fox
+          , [ ( "Up-Smash", 100 )
+            , ( "UT UA", 127 )
+            ]
+          )
+        , ( CaptainFalcon
+          , [ ( "Up-Smash", 118 )
+            , ( "UT UA", 127 )
+            ]
+          )
+        , ( Falco
+          , [ ( "Up-Smash", 106 )
+            , ( "UT UA", 136 )
+            ]
+          )
+        , ( Bowser
+          , [ ( "Up-Smash", 108 ) ]
+          )
+        , ( Sheik
+          , [ ( "Up-Smash", 95 )
+            , ( "UT UA", 104 )
+            ]
+          )
+        , ( Marth
+          , [ ( "Up-Smash", 93 )
+            , ( "UT UA", 100 )
+            ]
+          )
+        , ( Peach
+          , [ ( "Up-Smash", 85 ) ]
+          )
+        , ( JigglyPuff
+          , [ ( "Up-Smash", 66 )
+            , ( "UT UA", 66 )
+            , ( "Up-tilt", 107 )
+            , ( "D-tilt", 129 )
+            , ( "B-Air", 132 )
+            , ( "FC US", 45 )
+            ]
+          )
+        , ( IceClimbers
+          , [ ( "Up-Smash", 86 ) ]
+          )
+        , ( Pikachu
+          , [ ( "Up-Smash", 86 ) ]
+          )
+        , ( Samus
+          , [ ( "Up-Smash", 94 ) ]
+          )
+        , ( DrMario
+          , [ ( "Up-Smash", 94 ) ]
+          )
+        , ( Yoshi
+          , [ ( "Up-Smash", 102 ) ]
+          )
+        , ( Luigi
+          , [ ( "Up-Smash", 91 ) ]
+          )
+        , ( Ganondorf
+          , [ ( "Up-Smash", 105 ) ]
+          )
+        , ( Mario
+          , [ ( "Up-Smash", 94 ) ]
+          )
+        , ( YoungLink
+          , [ ( "Up-Smash", 92 ) ]
+          )
+        , ( DonkeyKong
+          , [ ( "Up-Smash", 113 ) ]
+          )
+        , ( Link
+          , [ ( "Up-Smash", 103 ) ]
+          )
+        , ( MrGameAndWatch
+          , [ ( "Up-Smash", 72 ) ]
+          )
+        , ( Roy
+          , [ ( "Up-Smash", 96 ) ]
+          )
+        , ( Mewtwo
+          , [ ( "Up-Smash", 82 ) ]
+          )
+        , ( Zelda
+          , [ ( "Up-Smash", 84 ) ]
+          )
+        , ( Ness
+          , [ ( "Up-Smash", 92 ) ]
+          )
+        ]
+
+
+pokemonStadiumPcts : StageInfo
+pokemonStadiumPcts =
+    makeStageInfo
+        [ ( Fox
+          , [ ( "Up-Smash", 85 )
+            , ( "UT UA", 101 )
+            ]
+          )
+        , ( CaptainFalcon
+          , [ ( "Up-Smash", 99 )
+            , ( "UT UA", 106 )
+            ]
+          )
+        , ( Falco
+          , [ ( "Up-Smash", 91 )
+            , ( "UT UA", 111 )
+            ]
+          )
+        , ( Bowser
+          , [ ( "Up-Smash", 90 ) ]
+          )
+        , ( Sheik
+          , [ ( "Up-Smash", 79 )
+            , ( "UT UA", 81 )
+            ]
+          )
+        , ( Marth
+          , [ ( "Up-Smash", 77 )
+            , ( "UT UA", 78 )
+            ]
+          )
+        , ( Peach
+          , [ ( "Up-Smash", 69 ) ]
+          )
+        , ( JigglyPuff
+          , [ ( "Up-Smash", 53 )
+            , ( "UT UA", 47 )
+            , ( "Up-tilt", 90 )
+            , ( "D-tilt", 109 )
+            , ( "B-Air", 119 )
+            , ( "FC US", 36 )
+            ]
+          )
+        , ( IceClimbers
+          , [ ( "Up-Smash", 70 ) ]
+          )
+        , ( Pikachu
+          , [ ( "Up-Smash", 71 ) ]
+          )
+        , ( Samus
+          , [ ( "Up-Smash", 76 ) ]
+          )
+        , ( DrMario
+          , [ ( "Up-Smash", 77 ) ]
+          )
+        , ( Yoshi
+          , [ ( "Up-Smash", 84 ) ]
+          )
+        , ( Luigi
+          , [ ( "Up-Smash", 74 ) ]
+          )
+        , ( Ganondorf
+          , [ ( "Up-Smash", 87 ) ]
+          )
+        , ( Mario
+          , [ ( "Up-Smash", 77 ) ]
+          )
+        , ( YoungLink
+          , [ ( "Up-Smash", 76 ) ]
+          )
+        , ( DonkeyKong
+          , [ ( "Up-Smash", 95 ) ]
+          )
+        , ( Link
+          , [ ( "Up-Smash", 86 ) ]
+          )
+        , ( MrGameAndWatch
+          , [ ( "Up-Smash", 58 ) ]
+          )
+        , ( Roy
+          , [ ( "Up-Smash", 80 ) ]
+          )
+        , ( Mewtwo
+          , [ ( "Up-Smash", 67 ) ]
+          )
+        , ( Zelda
+          , [ ( "Up-Smash", 68 ) ]
+          )
+        , ( Ness
+          , [ ( "Up-Smash", 76 ) ]
           )
         ]
 
