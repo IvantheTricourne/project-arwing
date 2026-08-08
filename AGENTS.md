@@ -21,6 +21,12 @@ a port.
   serving the root `index.html` (has the viewport meta tag + port wiring
   elm-live needs; don't delete it or dev mode reverts to the old
   "renders tiny on mobile" bug).
+  - **Gotcha**: the script passes `--output=elm.js` deliberately. Without
+    it, elm-live inlines the compiled JS straight into `index.html` and
+    rewrites that file on disk on every build — silently clobbering the
+    viewport meta tag/port wiring and reintroducing the mobile bug. If
+    `git status` ever shows `index.html` as modified after running
+    `elm:live`, this is why; `git checkout -- index.html` restores it.
 - `npm run build` (`build.js`) — compiles Elm with `--optimize` and stitches
   it into `dist/index.html` from `index-template.html` (self-contained,
   inlined JS, localStorage wired via `Elm.Main.init` + `setStorage` port
