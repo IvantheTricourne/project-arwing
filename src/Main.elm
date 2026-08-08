@@ -113,9 +113,9 @@ view model =
         <|
             column
                 [ centerX
-                , centerY
+                , alignTop
                 , width (fill |> maximum maxContentWidth)
-                , paddingXY 16 24
+                , paddingEach { top = 32, bottom = 24, left = 16, right = 16 }
                 , spacing 24
                 ]
                 [ case model.currentStage of
