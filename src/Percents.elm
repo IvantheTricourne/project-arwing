@@ -45,7 +45,9 @@ battlefieldPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
-            , ( "UT UA", 53 )
+            , ( "UT UA (0 SDI)", 53 )
+            , ( "UT UA (1.5 SDI)", 56 )
+            , ( "UT UA (TAS)", 65 )
             , ( "Up-tilt", 96 )
             , ( "D-tilt", 116 )
             , ( "B-Air", 119 )
@@ -101,6 +103,50 @@ battlefieldPcts =
           , [ ( "Up-Smash", 62 ) ]
           )
         ]
+        |> addPlatformKillPcts SidePlatform
+            [ ( Fox
+              , [ ( "UT UA", 98 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 102 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 108 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 79 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 76 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 45 )
+                , ( "UT UA (1.5 SDI)", 48 )
+                ]
+              )
+            ]
+        |> addPlatformKillPcts TopPlatform
+            [ ( Fox
+              , [ ( "UT UA", 88 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 92 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 98 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 68 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 64 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 36 )
+                , ( "UT UA (1.5 SDI)", 40 )
+                ]
+              )
+            ]
 
 
 finalDestinationPcts : StageInfo
@@ -195,7 +241,9 @@ finalDestinationPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 55 )
-            , ( "UT UA", 50 )
+            , ( "UT UA (0 SDI)", 50 )
+            , ( "UT UA (1.5 SDI)", 53 )
+            , ( "UT UA (TAS)", 62 )
             , ( "Up-tilt", 92 )
             , ( "D-tilt", 113 )
             , ( "B-Air", 121 )
@@ -249,7 +297,9 @@ yoshisStoryPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
-            , ( "UT UA", 44 )
+            , ( "UT UA (0 SDI)", 44 )
+            , ( "UT UA (1.5 SDI)", 48 )
+            , ( "UT UA (TAS)", 58 )
             , ( "Up-tilt", 88 )
             , ( "D-tilt", 105 )
             , ( "B-Air", 110 )
@@ -305,6 +355,50 @@ yoshisStoryPcts =
           , [ ( "Up-Smash", 56 ) ]
           )
         ]
+        |> addPlatformKillPcts SidePlatform
+            [ ( Fox
+              , [ ( "UT UA", 88 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 92 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 97 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 68 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 64 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 36 )
+                , ( "UT UA (1.5 SDI)", 39 )
+                ]
+              )
+            ]
+        |> addPlatformKillPcts TopPlatform
+            [ ( Fox
+              , [ ( "UT UA", 82 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 85 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 90 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 59 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 53 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 29 )
+                , ( "UT UA (1.5 SDI)", 33 )
+                ]
+              )
+            ]
 
 
 fountainOfDreamsPcts : StageInfo
@@ -345,7 +439,9 @@ fountainOfDreamsPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 58 )
-            , ( "UT UA", 54 )
+            , ( "UT UA (0 SDI)", 54 )
+            , ( "UT UA (1.5 SDI)", 57 )
+            , ( "UT UA (TAS)", 66 )
             , ( "Up-tilt", 96 )
             , ( "D-tilt", 114 )
             , ( "B-Air", 119 )
@@ -404,6 +500,28 @@ fountainOfDreamsPcts =
           , [ ( "Up-Smash", 63 ) ]
           )
         ]
+        |> addPlatformKillPcts TopPlatform
+            [ ( Fox
+              , [ ( "UT UA", 94 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 98 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 102 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 73 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 70 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 41 )
+                , ( "UT UA (1.5 SDI)", 44 )
+                ]
+              )
+            ]
 
 
 dreamlandPcts : StageInfo
@@ -444,7 +562,9 @@ dreamlandPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 66 )
-            , ( "UT UA", 66 )
+            , ( "UT UA (0 SDI)", 66 )
+            , ( "UT UA (1.5 SDI)", 69 )
+            , ( "UT UA (TAS)", 77 )
             , ( "Up-tilt", 107 )
             , ( "D-tilt", 129 )
             , ( "B-Air", 132 )
@@ -500,6 +620,50 @@ dreamlandPcts =
           , [ ( "Up-Smash", 92 ) ]
           )
         ]
+        |> addPlatformKillPcts SidePlatform
+            [ ( Fox
+              , [ ( "UT UA", 119 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 119 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 130 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 94 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 92 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 59 )
+                , ( "UT UA (1.5 SDI)", 62 )
+                ]
+              )
+            ]
+        |> addPlatformKillPcts TopPlatform
+            [ ( Fox
+              , [ ( "UT UA", 107 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 112 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 124 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 87 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 85 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 52 )
+                , ( "UT UA (1.5 SDI)", 56 )
+                ]
+              )
+            ]
 
 
 pokemonStadiumPcts : StageInfo
@@ -517,7 +681,7 @@ pokemonStadiumPcts =
           )
         , ( Falco
           , [ ( "Up-Smash", 91 )
-            , ( "UT UA", 111 )
+            , ( "UT UA", 108 )
             ]
           )
         , ( Bowser
@@ -540,7 +704,9 @@ pokemonStadiumPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 53 )
-            , ( "UT UA", 47 )
+            , ( "UT UA (0 SDI)", 47 )
+            , ( "UT UA (1.5 SDI)", 51 )
+            , ( "UT UA (TAS)", 60 )
             , ( "Up-tilt", 90 )
             , ( "D-tilt", 109 )
             , ( "B-Air", 119 )
@@ -596,6 +762,28 @@ pokemonStadiumPcts =
           , [ ( "Up-Smash", 76 ) ]
           )
         ]
+        |> addPlatformKillPcts SidePlatform
+            [ ( Fox
+              , [ ( "UT UA", 90 ) ]
+              )
+            , ( CaptainFalcon
+              , [ ( "UT UA", 95 ) ]
+              )
+            , ( Falco
+              , [ ( "UT UA", 100 ) ]
+              )
+            , ( Sheik
+              , [ ( "UT UA", 76 ) ]
+              )
+            , ( Marth
+              , [ ( "UT UA", 68 ) ]
+              )
+            , ( JigglyPuff
+              , [ ( "UT UA (0 SDI)", 39 )
+                , ( "UT UA (1.5 SDI)", 43 )
+                ]
+              )
+            ]
 
 
 getStageStageInfo : Stage -> StageInfo
@@ -620,6 +808,6 @@ getStageStageInfo stage =
             pokemonStadiumPcts
 
 
-getStageCharacterKillPcts : Stage -> Character -> Maybe KillPcts
-getStageCharacterKillPcts stage character =
-    getCharKillPcts character (getStageStageInfo stage)
+getStageCharacterKillPcts : Stage -> Platform -> Character -> Maybe KillPcts
+getStageCharacterKillPcts stage platform character =
+    getCharKillPcts character platform (getStageStageInfo stage)

@@ -24,6 +24,7 @@ import Types exposing (Character(..), Stage(..))
 type alias Model =
     { currentStage : Maybe Types.Stage
     , currentCharacter : Maybe Types.Character
+    , currentPlatform : Types.Platform
     , stageMenuOpen : Bool
     }
 
@@ -46,6 +47,7 @@ allStages =
 type Msg
     = SelectStage Types.Stage
     | SelectChar Types.Character
+    | SelectPlatform Types.Platform
     | ToggleStageMenu
     | NoOp
     | Back
@@ -56,10 +58,13 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         SelectStage stage ->
-            ( { model | currentStage = Just stage, stageMenuOpen = False }, Cmd.none )
+            ( { model | currentStage = Just stage, currentPlatform = Types.Ground, stageMenuOpen = False }, Cmd.none )
 
         SelectChar char ->
-            ( { model | currentCharacter = Just char }, Cmd.none )
+            ( { model | currentCharacter = Just char, currentPlatform = Types.Ground }, Cmd.none )
+
+        SelectPlatform platform ->
+            ( { model | currentPlatform = platform }, Cmd.none )
 
         ToggleStageMenu ->
             ( { model | stageMenuOpen = not model.stageMenuOpen }, Cmd.none )
@@ -69,15 +74,15 @@ update msg model =
 
         Back ->
             ( if model.currentCharacter /= Nothing then
-                { model | currentCharacter = Nothing, stageMenuOpen = False }
+                { model | currentCharacter = Nothing, currentPlatform = Types.Ground, stageMenuOpen = False }
 
               else
-                { model | currentStage = Nothing, stageMenuOpen = False }
+                { model | currentStage = Nothing, currentPlatform = Types.Ground, stageMenuOpen = False }
             , Cmd.none
             )
 
         Reset ->
-            ( { model | currentStage = Nothing, currentCharacter = Nothing, stageMenuOpen = False }, Cmd.none )
+            ( { model | currentStage = Nothing, currentCharacter = Nothing, currentPlatform = Types.Ground, stageMenuOpen = False }, Cmd.none )
 
 
 
@@ -144,7 +149,7 @@ view model =
                                 viewCharacterSelect stage
 
                             Just char ->
-                                viewKillPcts model.stageMenuOpen stage char
+                                viewKillPcts model.stageMenuOpen stage char model.currentPlatform
                 ]
 
 
@@ -330,8 +335,39 @@ viewCharacterSelect stage =
         ]
 
 
-viewKillPcts : Bool -> Types.Stage -> Types.Character -> Element Msg
-viewKillPcts stageMenuOpen stage char =
+platformSwitcher : Types.Platform -> Element Msg
+platformSwitcher currentPlatform =
+    row
+        [ centerX
+        , spacing 8
+        ]
+        (L.map
+            (\platform ->
+                Input.button
+                    [ Font.size 13
+                    , Font.semiBold
+                    , Background.color
+                        (if platform == currentPlatform then
+                            lightGrey
+
+                         else
+                            grey
+                        )
+                    , Border.rounded 8
+                    , Border.width 1
+                    , Border.color lightGrey
+                    , paddingXY 10 8
+                    ]
+                    { onPress = Just (SelectPlatform platform)
+                    , label = text (Types.platformToString platform)
+                    }
+            )
+            Types.allPlatforms
+        )
+
+
+viewKillPcts : Bool -> Types.Stage -> Types.Character -> Types.Platform -> Element Msg
+viewKillPcts stageMenuOpen stage char platform =
     column
         [ centerX
         , spacing 24
@@ -348,11 +384,12 @@ viewKillPcts stageMenuOpen stage char =
             { src = Resources.charIconPath char
             , description = Types.characterToString char
             }
+        , platformSwitcher platform
         , el
             [ centerX
             , Font.size 17
             ]
-            (case getStageCharacterKillPcts stage char of
+            (case getStageCharacterKillPcts stage platform char of
                 Nothing ->
                     text "none yet ;("
 
@@ -466,7 +503,7 @@ encode model =
 
 decoder : D.Decoder Model
 decoder =
-    D.map2 (\stage char -> Model stage char False)
+    D.map2 (\stage char -> Model stage char Types.Ground False)
         (D.field "currentStage" <| D.nullable Types.stageDecoder)
         (D.field "currentCharacter" <| D.nullable Types.characterDecoder)
 
@@ -484,6 +521,7 @@ init flags =
         Err _ ->
             { currentStage = Nothing
             , currentCharacter = Nothing
+            , currentPlatform = Types.Ground
             , stageMenuOpen = False
             }
     , Cmd.none

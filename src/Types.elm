@@ -361,8 +361,45 @@ type alias KillPcts =
     Dict.Dict String Int
 
 
+type Platform
+    = Ground
+    | SidePlatform
+    | TopPlatform
+
+
+allPlatforms : List Platform
+allPlatforms =
+    [ Ground, SidePlatform, TopPlatform ]
+
+
+platformToString : Platform -> String
+platformToString platform =
+    case platform of
+        Ground ->
+            "Ground"
+
+        SidePlatform ->
+            "Side Platform"
+
+        TopPlatform ->
+            "Top Platform"
+
+
+platformToInt : Platform -> Int
+platformToInt platform =
+    case platform of
+        Ground ->
+            0
+
+        SidePlatform ->
+            1
+
+        TopPlatform ->
+            2
+
+
 type StageInfo
-    = StageInfo (Dict.Dict Int KillPcts)
+    = StageInfo (Dict.Dict ( Int, Int ) KillPcts)
 
 
 makeStageInfo : List ( Character, List ( String, Int ) ) -> StageInfo
@@ -370,11 +407,21 @@ makeStageInfo charKillPcts =
     List.foldr addCharKillPcts (StageInfo Dict.empty) charKillPcts
 
 
-getCharKillPcts : Character -> StageInfo -> Maybe KillPcts
-getCharKillPcts character (StageInfo dict) =
-    Dict.get (characterToInt character) dict
+getCharKillPcts : Character -> Platform -> StageInfo -> Maybe KillPcts
+getCharKillPcts character platform (StageInfo dict) =
+    Dict.get ( characterToInt character, platformToInt platform ) dict
 
 
 addCharKillPcts : ( Character, List ( String, Int ) ) -> StageInfo -> StageInfo
 addCharKillPcts ( character, killPcts ) (StageInfo dict) =
-    StageInfo (Dict.insert (characterToInt character) (Dict.fromList killPcts) dict)
+    StageInfo (Dict.insert ( characterToInt character, platformToInt Ground ) (Dict.fromList killPcts) dict)
+
+
+addCharPlatformKillPcts : Platform -> ( Character, List ( String, Int ) ) -> StageInfo -> StageInfo
+addCharPlatformKillPcts platform ( character, killPcts ) (StageInfo dict) =
+    StageInfo (Dict.insert ( characterToInt character, platformToInt platform ) (Dict.fromList killPcts) dict)
+
+
+addPlatformKillPcts : Platform -> List ( Character, List ( String, Int ) ) -> StageInfo -> StageInfo
+addPlatformKillPcts platform charKillPcts stageInfo =
+    List.foldr (addCharPlatformKillPcts platform) stageInfo charKillPcts

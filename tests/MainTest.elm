@@ -4,13 +4,14 @@ import Expect
 import Json.Decode as D
 import Main exposing (Model, Msg(..), allStages, decoder, encode, stageSwitcherOptions, update)
 import Test exposing (..)
-import Types exposing (Character(..), Stage(..))
+import Types exposing (Character(..), Platform(..), Stage(..))
 
 
 emptyModel : Model
 emptyModel =
     { currentStage = Nothing
     , currentCharacter = Nothing
+    , currentPlatform = Ground
     , stageMenuOpen = False
     }
 
@@ -40,6 +41,23 @@ suite =
                             update (SelectChar Fox) emptyModel
                     in
                     Expect.equal newModel.currentCharacter (Just Fox)
+            , test "SelectChar resets currentPlatform to Ground" <|
+                \_ ->
+                    let
+                        model =
+                            { emptyModel | currentPlatform = TopPlatform }
+
+                        ( newModel, _ ) =
+                            update (SelectChar Fox) model
+                    in
+                    Expect.equal newModel.currentPlatform Ground
+            , test "SelectPlatform sets currentPlatform" <|
+                \_ ->
+                    let
+                        ( newModel, _ ) =
+                            update (SelectPlatform SidePlatform) emptyModel
+                    in
+                    Expect.equal newModel.currentPlatform SidePlatform
             , test "ToggleStageMenu flips the bool from False to True" <|
                 \_ ->
                     let
@@ -57,12 +75,13 @@ suite =
                             update ToggleStageMenu model
                     in
                     Expect.equal newModel.stageMenuOpen False
-            , test "Back with stage and character set clears only the character" <|
+            , test "Back with stage and character set clears the character and resets the platform" <|
                 \_ ->
                     let
                         model =
                             { currentStage = Just Battlefield
                             , currentCharacter = Just Fox
+                            , currentPlatform = TopPlatform
                             , stageMenuOpen = True
                             }
 
@@ -72,6 +91,7 @@ suite =
                     Expect.equal newModel
                         { currentStage = Just Battlefield
                         , currentCharacter = Nothing
+                        , currentPlatform = Ground
                         , stageMenuOpen = False
                         }
             , test "Back with only stage set clears the stage" <|
@@ -80,6 +100,7 @@ suite =
                         model =
                             { currentStage = Just Battlefield
                             , currentCharacter = Nothing
+                            , currentPlatform = Ground
                             , stageMenuOpen = True
                             }
 
@@ -89,6 +110,7 @@ suite =
                     Expect.equal newModel
                         { currentStage = Nothing
                         , currentCharacter = Nothing
+                        , currentPlatform = Ground
                         , stageMenuOpen = False
                         }
             , test "Reset clears both selections and closes the menu" <|
@@ -97,6 +119,7 @@ suite =
                         model =
                             { currentStage = Just Battlefield
                             , currentCharacter = Just Fox
+                            , currentPlatform = SidePlatform
                             , stageMenuOpen = True
                             }
 
@@ -110,6 +133,7 @@ suite =
                         model =
                             { currentStage = Just Battlefield
                             , currentCharacter = Just Fox
+                            , currentPlatform = Ground
                             , stageMenuOpen = True
                             }
 
@@ -130,6 +154,7 @@ suite =
                         model =
                             { currentStage = Just Battlefield
                             , currentCharacter = Just Fox
+                            , currentPlatform = TopPlatform
                             , stageMenuOpen = True
                             }
                     in
@@ -139,6 +164,7 @@ suite =
                             (Ok
                                 { currentStage = Just Battlefield
                                 , currentCharacter = Just Fox
+                                , currentPlatform = Ground
                                 , stageMenuOpen = False
                                 }
                             )
@@ -148,6 +174,7 @@ suite =
                         model =
                             { currentStage = Just Dreamland
                             , currentCharacter = Nothing
+                            , currentPlatform = Ground
                             , stageMenuOpen = True
                             }
                     in
@@ -157,6 +184,7 @@ suite =
                             (Ok
                                 { currentStage = Just Dreamland
                                 , currentCharacter = Nothing
+                                , currentPlatform = Ground
                                 , stageMenuOpen = False
                                 }
                             )
