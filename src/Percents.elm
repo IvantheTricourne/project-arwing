@@ -9,23 +9,17 @@ battlefieldPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 89 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA", 106 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 105 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA", 113 )
             ]
           )
         , ( Falco
           , [ ( "Up-Smash", 95 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA", 116 )
             ]
           )
         , ( Bowser
@@ -33,16 +27,12 @@ battlefieldPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 84 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA", 88 )
             ]
           )
         , ( Marth
           , [ ( "Up-Smash", 82 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA", 86 )
             ]
           )
         , ( Pikachu
@@ -55,9 +45,9 @@ battlefieldPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 88 )
+            , ( "UT UA (0 SDI)", 53 )
+            , ( "UT UA (1.5 SDI)", 56 )
+            , ( "UT UA (TAS)", 65 )
             , ( "Up-tilt", 96 )
             , ( "D-tilt", 116 )
             , ( "B-Air", 119 )
@@ -115,77 +105,45 @@ battlefieldPcts =
         ]
         |> addPlatformKillPcts SidePlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
-                ]
+              , [ ( "UT UA", 98 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
-                ]
+              , [ ( "UT UA", 102 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
-                ]
+              , [ ( "UT UA", 108 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
-                ]
+              , [ ( "UT UA", 79 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
-                ]
+              , [ ( "UT UA", 76 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 104 )
-                , ( "UT UA (1.5 SDI)", 78 )
-                , ( "UT UA (TAS)", 78 )
+              , [ ( "UT UA (0 SDI)", 45 )
+                , ( "UT UA (1.5 SDI)", 48 )
                 ]
               )
             ]
         |> addPlatformKillPcts TopPlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 88 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 92 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 98 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 68 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 64 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 94 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
+              , [ ( "UT UA (0 SDI)", 36 )
+                , ( "UT UA (1.5 SDI)", 40 )
                 ]
               )
             ]
@@ -196,16 +154,12 @@ finalDestinationPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 86 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA", 103 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 113 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA", 108 )
             ]
           )
         , ( DonkeyKong
@@ -213,9 +167,7 @@ finalDestinationPcts =
           )
         , ( Falco
           , [ ( "Up-Smash", 93 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA", 111 )
             ]
           )
         , ( Bowser
@@ -235,9 +187,7 @@ finalDestinationPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 81 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA", 83 )
             ]
           )
         , ( Mario
@@ -248,9 +198,7 @@ finalDestinationPcts =
           )
         , ( Marth
           , [ ( "Up-Smash", 79 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA", 80 )
             ]
           )
         , ( Ness
@@ -293,9 +241,9 @@ finalDestinationPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 55 )
-            , ( "UT UA (0 SDI)", 108 )
-            , ( "UT UA (1.5 SDI)", 82 )
-            , ( "UT UA (TAS)", 83 )
+            , ( "UT UA (0 SDI)", 50 )
+            , ( "UT UA (1.5 SDI)", 53 )
+            , ( "UT UA (TAS)", 62 )
             , ( "Up-tilt", 92 )
             , ( "D-tilt", 113 )
             , ( "B-Air", 121 )
@@ -310,16 +258,12 @@ yoshisStoryPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 82 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA", 96 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 96 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA", 100 )
             ]
           )
         , ( DonkeyKong
@@ -327,9 +271,7 @@ yoshisStoryPcts =
           )
         , ( Falco
           , [ ( "Up-Smash", 98 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA", 105 )
             ]
           )
         , ( Bowser
@@ -337,16 +279,12 @@ yoshisStoryPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 76 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA", 77 )
             ]
           )
         , ( Marth
           , [ ( "Up-Smash", 73 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA", 74 )
             ]
           )
         , ( Pikachu
@@ -359,9 +297,9 @@ yoshisStoryPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 57 )
-            , ( "UT UA (0 SDI)", 101 )
-            , ( "UT UA (1.5 SDI)", 76 )
-            , ( "UT UA (TAS)", 76 )
+            , ( "UT UA (0 SDI)", 44 )
+            , ( "UT UA (1.5 SDI)", 48 )
+            , ( "UT UA (TAS)", 58 )
             , ( "Up-tilt", 88 )
             , ( "D-tilt", 105 )
             , ( "B-Air", 110 )
@@ -419,77 +357,45 @@ yoshisStoryPcts =
         ]
         |> addPlatformKillPcts SidePlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 88 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 92 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 97 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 68 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
-                ]
+              , [ ( "UT UA", 64 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 93 )
-                , ( "UT UA (1.5 SDI)", 66 )
-                , ( "UT UA (TAS)", 68 )
+              , [ ( "UT UA (0 SDI)", 36 )
+                , ( "UT UA (1.5 SDI)", 39 )
                 ]
               )
             ]
         |> addPlatformKillPcts TopPlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
-                ]
+              , [ ( "UT UA", 82 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
-                ]
+              , [ ( "UT UA", 85 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
-                ]
+              , [ ( "UT UA", 90 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
-                ]
+              , [ ( "UT UA", 59 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
-                ]
+              , [ ( "UT UA", 53 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 87 )
-                , ( "UT UA (1.5 SDI)", 57 )
-                , ( "UT UA (TAS)", 61 )
+              , [ ( "UT UA (0 SDI)", 29 )
+                , ( "UT UA (1.5 SDI)", 33 )
                 ]
               )
             ]
@@ -500,23 +406,17 @@ fountainOfDreamsPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 90 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA", 107 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 106 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA", 114 )
             ]
           )
         , ( Falco
           , [ ( "Up-Smash", 96 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA", 116 )
             ]
           )
         , ( Bowser
@@ -524,16 +424,12 @@ fountainOfDreamsPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 85 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA", 88 )
             ]
           )
         , ( Marth
           , [ ( "Up-Smash", 82 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA", 86 )
             ]
           )
         , ( Peach
@@ -543,9 +439,9 @@ fountainOfDreamsPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 58 )
-            , ( "UT UA (0 SDI)", 112 )
-            , ( "UT UA (1.5 SDI)", 87 )
-            , ( "UT UA (TAS)", 89 )
+            , ( "UT UA (0 SDI)", 54 )
+            , ( "UT UA (1.5 SDI)", 57 )
+            , ( "UT UA (TAS)", 66 )
             , ( "Up-tilt", 96 )
             , ( "D-tilt", 114 )
             , ( "B-Air", 119 )
@@ -606,39 +502,23 @@ fountainOfDreamsPcts =
         ]
         |> addPlatformKillPcts TopPlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
-                ]
+              , [ ( "UT UA", 94 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
-                ]
+              , [ ( "UT UA", 98 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
-                ]
+              , [ ( "UT UA", 102 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
-                ]
+              , [ ( "UT UA", 73 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
-                ]
+              , [ ( "UT UA", 70 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 99 )
-                , ( "UT UA (1.5 SDI)", 72 )
-                , ( "UT UA (TAS)", 74 )
+              , [ ( "UT UA (0 SDI)", 41 )
+                , ( "UT UA (1.5 SDI)", 44 )
                 ]
               )
             ]
@@ -649,23 +529,17 @@ dreamlandPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 100 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA", 127 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 118 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA", 127 )
             ]
           )
         , ( Falco
           , [ ( "Up-Smash", 106 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA", 136 )
             ]
           )
         , ( Bowser
@@ -673,16 +547,12 @@ dreamlandPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 95 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA", 104 )
             ]
           )
         , ( Marth
           , [ ( "Up-Smash", 93 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA", 100 )
             ]
           )
         , ( Peach
@@ -692,9 +562,9 @@ dreamlandPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 66 )
-            , ( "UT UA (0 SDI)", 132 )
-            , ( "UT UA (1.5 SDI)", 102 )
-            , ( "UT UA (TAS)", 102 )
+            , ( "UT UA (0 SDI)", 66 )
+            , ( "UT UA (1.5 SDI)", 69 )
+            , ( "UT UA (TAS)", 77 )
             , ( "Up-tilt", 107 )
             , ( "D-tilt", 129 )
             , ( "B-Air", 132 )
@@ -752,77 +622,45 @@ dreamlandPcts =
         ]
         |> addPlatformKillPcts SidePlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
-                ]
+              , [ ( "UT UA", 119 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
-                ]
+              , [ ( "UT UA", 119 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
-                ]
+              , [ ( "UT UA", 130 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
-                ]
+              , [ ( "UT UA", 94 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
-                ]
+              , [ ( "UT UA", 92 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 126 )
-                , ( "UT UA (1.5 SDI)", 93 )
-                , ( "UT UA (TAS)", 94 )
+              , [ ( "UT UA (0 SDI)", 59 )
+                , ( "UT UA (1.5 SDI)", 62 )
                 ]
               )
             ]
         |> addPlatformKillPcts TopPlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
-                ]
+              , [ ( "UT UA", 107 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
-                ]
+              , [ ( "UT UA", 112 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
-                ]
+              , [ ( "UT UA", 124 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
-                ]
+              , [ ( "UT UA", 87 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
-                ]
+              , [ ( "UT UA", 85 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 117 )
-                , ( "UT UA (1.5 SDI)", 86 )
-                , ( "UT UA (TAS)", 87 )
+              , [ ( "UT UA (0 SDI)", 52 )
+                , ( "UT UA (1.5 SDI)", 56 )
                 ]
               )
             ]
@@ -833,23 +671,17 @@ pokemonStadiumPcts =
     makeStageInfo
         [ ( Fox
           , [ ( "Up-Smash", 85 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA", 101 )
             ]
           )
         , ( CaptainFalcon
           , [ ( "Up-Smash", 99 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA", 106 )
             ]
           )
         , ( Falco
           , [ ( "Up-Smash", 91 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA", 108 )
             ]
           )
         , ( Bowser
@@ -857,16 +689,12 @@ pokemonStadiumPcts =
           )
         , ( Sheik
           , [ ( "Up-Smash", 79 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA", 81 )
             ]
           )
         , ( Marth
           , [ ( "Up-Smash", 77 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA", 78 )
             ]
           )
         , ( Peach
@@ -876,9 +704,9 @@ pokemonStadiumPcts =
           )
         , ( JigglyPuff
           , [ ( "Up-Smash", 53 )
-            , ( "UT UA (0 SDI)", 105 )
-            , ( "UT UA (1.5 SDI)", 80 )
-            , ( "UT UA (TAS)", 81 )
+            , ( "UT UA (0 SDI)", 47 )
+            , ( "UT UA (1.5 SDI)", 51 )
+            , ( "UT UA (TAS)", 60 )
             , ( "Up-tilt", 90 )
             , ( "D-tilt", 109 )
             , ( "B-Air", 119 )
@@ -936,39 +764,23 @@ pokemonStadiumPcts =
         ]
         |> addPlatformKillPcts SidePlatform
             [ ( Fox
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
-                ]
+              , [ ( "UT UA", 90 ) ]
               )
             , ( CaptainFalcon
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
-                ]
+              , [ ( "UT UA", 95 ) ]
               )
             , ( Falco
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
-                ]
+              , [ ( "UT UA", 100 ) ]
               )
             , ( Sheik
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
-                ]
+              , [ ( "UT UA", 76 ) ]
               )
             , ( Marth
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
-                ]
+              , [ ( "UT UA", 68 ) ]
               )
             , ( JigglyPuff
-              , [ ( "UT UA (0 SDI)", 96 )
-                , ( "UT UA (1.5 SDI)", 73 )
-                , ( "UT UA (TAS)", 71 )
+              , [ ( "UT UA (0 SDI)", 39 )
+                , ( "UT UA (1.5 SDI)", 43 )
                 ]
               )
             ]
