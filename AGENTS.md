@@ -73,40 +73,20 @@ to HTTPS since SSH push wasn't set up in this environment). To deploy:
 `npm run build` here, then copy `dist/index.html` and `dist/rsrc/` into that
 repo's `project-arwing/` directory, commit, and push.
 
-## Current branch: `mobile-responsive-ui`
+## Testing & CI
 
-Primary feature: a quick stage-switcher dropdown on the kill-percents
-screen. Tapping the stage name (now with a ▼/▲ indicator) toggles a
-`wrappedRow` of all six stage icons right there; picking one swaps the
-stage while keeping the current character selected, so you can flip
-through stages for the same character (the actual "glance between
-games/sets" workflow) without Back -> Back -> reselect character.
+- `npm test` (alias `npm run elm:test`) runs the `elm-test` suite under
+  `tests/` — `TypesTest.elm` (encode/decode round-trips, `characterToInt`
+  injectivity), `PercentsTest.elm` (kill-% data sanity checks), `MainTest.elm`
+  (`update` semantics, `Model` persistence round-trips, stage-switcher
+  dropdown filtering).
+- `.github/workflows/ci.yml` runs that suite on every PR and on push to
+  `master`.
 
-Alongside that, this branch fixes the mobile rendering complaints (screenshots showed the
-page rendering at a fixed tiny size with huge empty space, icons too small,
-bad navigation between stage/character selection):
+## Contribution workflow
 
-1. **Root cause of "always renders the same static size" on phones**: the
-   deployed `index.html` had no `<meta name="viewport">` tag at all, so
-   mobile browsers rendered it at desktop width and zoomed out. Fixed in
-   `index-template.html` / `index.html`.
-2. Character icons are natively 24x24px and were only ever CSS-`scale`d
-   (a transform, not a real resize) — now explicitly sized via elm-ui
-   `width`/`height` (52px characters, 120x105 stages).
-3. Fixed per-row `row`s that could overflow on narrow screens are now
-   `wrappedRow`s that reflow to the viewport.
-4. Content is `alignTop` instead of `centerY` — centering in a tall phone
-   viewport left ~half the screen black above/below the card.
-5. Added a real `Back` button (steps back one screen: kill%s → character
-   select → stage select) distinct from `Reset` (clears both selections).
-   Previously the only way back was tapping a tiny unlabeled stage
-   thumbnail that acted as a hidden reset button.
-6. The `setStorage` port and `encode`/`decoder` in `Main.elm` existed but
-   were never wired up in the previously-deployed `index.html` — selection
-   persistence across reloads never actually worked in production. Now
-   wired via `flags`/`app.ports.setStorage.subscribe` in both `index.html`
-   and `index-template.html`.
-
-Not yet pushed to `origin` as of this writing — no working GitHub auth in
-the environment that did this work (see git log / ask the user before
-assuming it's up to date on the remote).
+Always work on a feature branch and open a PR against `master` — never
+commit or push directly to `master`. Use `gh pr create` if the `gh` CLI is
+available; otherwise push the branch (`git push -u origin <branch>`) and
+hand the user the compare URL GitHub prints, since `gh` may not be
+installed in every environment this repo is worked in from.
