@@ -24,7 +24,19 @@ import Types exposing (Character(..), Stage(..))
 type alias Model =
     { currentStage : Maybe Types.Stage
     , currentCharacter : Maybe Types.Character
+    , stageMenuOpen : Bool
     }
+
+
+allStages : List Types.Stage
+allStages =
+    [ Battlefield
+    , Dreamland
+    , FinalDestination
+    , FountainOfDreams
+    , PokemonStadium
+    , YoshisStory
+    ]
 
 
 
@@ -34,6 +46,7 @@ type alias Model =
 type Msg
     = SelectStage Types.Stage
     | SelectChar Types.Character
+    | ToggleStageMenu
     | NoOp
     | Back
     | Reset
@@ -43,25 +56,28 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         SelectStage stage ->
-            ( { model | currentStage = Just stage }, Cmd.none )
+            ( { model | currentStage = Just stage, stageMenuOpen = False }, Cmd.none )
 
         SelectChar char ->
             ( { model | currentCharacter = Just char }, Cmd.none )
+
+        ToggleStageMenu ->
+            ( { model | stageMenuOpen = not model.stageMenuOpen }, Cmd.none )
 
         NoOp ->
             ( model, Cmd.none )
 
         Back ->
             ( if model.currentCharacter /= Nothing then
-                { model | currentCharacter = Nothing }
+                { model | currentCharacter = Nothing, stageMenuOpen = False }
 
               else
-                { model | currentStage = Nothing }
+                { model | currentStage = Nothing, stageMenuOpen = False }
             , Cmd.none
             )
 
         Reset ->
-            ( { model | currentStage = Nothing, currentCharacter = Nothing }, Cmd.none )
+            ( { model | currentStage = Nothing, currentCharacter = Nothing, stageMenuOpen = False }, Cmd.none )
 
 
 
@@ -128,7 +144,7 @@ view model =
                                 viewCharacterSelect stage
 
                             Just char ->
-                                viewKillPcts stage char
+                                viewKillPcts model.stageMenuOpen stage char
                 ]
 
 
@@ -159,6 +175,58 @@ header canGoBack title =
             , height (px 2)
             , Background.color white
             ]
+            none
+        ]
+
+
+stageSwitcherHeader : Bool -> Types.Stage -> Element Msg
+stageSwitcherHeader stageMenuOpen stage =
+    let
+        makeStageOption s =
+            iconButton (SelectStage s) 76 66 (Resources.stageImgPath s) (Types.stageToString s)
+    in
+    column
+        [ width fill
+        , spacing 12
+        ]
+        [ row
+            [ width fill ]
+            [ navButton Back "‹ Back"
+            , Input.button
+                [ centerX ]
+                { onPress = Just ToggleStageMenu
+                , label =
+                    el
+                        [ Font.extraBold
+                        , Font.italic
+                        , Font.size 20
+                        ]
+                        (text <|
+                            Types.stageToString stage
+                                ++ (if stageMenuOpen then
+                                        " ▲"
+
+                                    else
+                                        " ▼"
+                                   )
+                        )
+                }
+            , el [ width (px 72) ] none
+            ]
+        , el
+            [ width fill
+            , height (px 2)
+            , Background.color white
+            ]
+            none
+        , if stageMenuOpen then
+            wrappedRow
+                [ spacing 8
+                , centerX
+                ]
+                (L.map makeStageOption allStages)
+
+          else
             none
         ]
 
@@ -199,13 +267,7 @@ viewStageSelect model =
             [ spacing 12
             , centerX
             ]
-            [ makeStageImg Battlefield
-            , makeStageImg Dreamland
-            , makeStageImg FinalDestination
-            , makeStageImg FountainOfDreams
-            , makeStageImg PokemonStadium
-            , makeStageImg YoshisStory
-            ]
+            (L.map makeStageImg allStages)
         ]
 
 
@@ -263,14 +325,14 @@ viewCharacterSelect stage =
         ]
 
 
-viewKillPcts : Types.Stage -> Types.Character -> Element Msg
-viewKillPcts stage char =
+viewKillPcts : Bool -> Types.Stage -> Types.Character -> Element Msg
+viewKillPcts stageMenuOpen stage char =
     column
         [ centerX
         , spacing 24
         , width fill
         ]
-        [ header True (Types.stageToString stage)
+        [ stageSwitcherHeader stageMenuOpen stage
         , image
             [ centerX
             , width (px 80)
@@ -399,7 +461,7 @@ encode model =
 
 decoder : D.Decoder Model
 decoder =
-    D.map2 Model
+    D.map2 (\stage char -> Model stage char False)
         (D.field "currentStage" <| D.nullable Types.stageDecoder)
         (D.field "currentCharacter" <| D.nullable Types.characterDecoder)
 
@@ -417,6 +479,7 @@ init flags =
         Err _ ->
             { currentStage = Nothing
             , currentCharacter = Nothing
+            , stageMenuOpen = False
             }
     , Cmd.none
     )
