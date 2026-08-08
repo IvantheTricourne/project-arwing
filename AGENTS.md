@@ -50,7 +50,14 @@ repo's `project-arwing/` directory, commit, and push.
 
 ## Current branch: `mobile-responsive-ui`
 
-This branch fixes the mobile rendering complaints (screenshots showed the
+Primary feature: a quick stage-switcher dropdown on the kill-percents
+screen. Tapping the stage name (now with a ▼/▲ indicator) toggles a
+`wrappedRow` of all six stage icons right there; picking one swaps the
+stage while keeping the current character selected, so you can flip
+through stages for the same character (the actual "glance between
+games/sets" workflow) without Back -> Back -> reselect character.
+
+Alongside that, this branch fixes the mobile rendering complaints (screenshots showed the
 page rendering at a fixed tiny size with huge empty space, icons too small,
 bad navigation between stage/character selection):
 
