@@ -37,6 +37,31 @@ a port.
     `$&`/`$1`-style replacement-pattern handling silently corrupts it if you
     go back to a naive `.replace()` call.
 
+## Running elm-live / dev servers as an agent
+
+`npm run elm:live` and any throwaway `python3 -m http.server` you spin up for
+screenshot testing are background processes you are responsible for reaping.
+Concretely:
+
+- Track the actual PID. Prefer starting it via the harness's own
+  run-in-background mechanism (so it's tracked and stoppable) over
+  `(cmd &)` in a raw shell — a backgrounded subshell detaches and
+  `pkill -f elm-live` is not reliable against it (this has already bitten
+  us: a stray `elm-live` from an earlier test was still running an hour
+  later).
+- Before ending a session/task, check for stragglers instead of assuming
+  your `kill`/`pkill` worked:
+  `ps aux | grep -iE "elm-live|elm make|http\.server" | grep -v grep`
+- **Never `kill -9` a PID from `lsof -ti:<port>` without first running
+  `ps -p <pid> -o pid,ppid,command` to see what it actually is.** `lsof
+  -ti:PORT` matches any process with an fd touching that port, including a
+  browser's network-service helper process that merely had a connection
+  open to your local dev server (e.g. from screenshot-testing via
+  claude-in-chrome) — not just the server itself. We've already killed a
+  Brave Browser Helper this way by trusting the port number blindly; it
+  self-healed, but don't rely on that. Match on the actual command
+  (`elm-live`, `python3 -m http.server`) before killing.
+
 ## Deployment (currently manual, no CI)
 
 The live site is `https://ivanthetricourne.github.io/project-arwing/index.html`,
