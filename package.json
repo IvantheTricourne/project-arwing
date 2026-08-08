@@ -8,6 +8,7 @@
     "elm": "elm make src/Main.elm --output index.js --optimize || true",
     "elm:live": "elm-live src/Main.elm --open --optimize || true",
     "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
+    "build": "node build.js",
     "start": "npm run elm & electron main.js",
     "watch": "npm run start & npm run elm:watch & wait"
   },
