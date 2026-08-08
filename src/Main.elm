@@ -24,7 +24,19 @@ import Types exposing (Character(..), Stage(..))
 type alias Model =
     { currentStage : Maybe Types.Stage
     , currentCharacter : Maybe Types.Character
+    , stageMenuOpen : Bool
     }
+
+
+allStages : List Types.Stage
+allStages =
+    [ Battlefield
+    , Dreamland
+    , FinalDestination
+    , FountainOfDreams
+    , PokemonStadium
+    , YoshisStory
+    ]
 
 
 
@@ -34,7 +46,9 @@ type alias Model =
 type Msg
     = SelectStage Types.Stage
     | SelectChar Types.Character
+    | ToggleStageMenu
     | NoOp
+    | Back
     | Reset
 
 
@@ -42,16 +56,28 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         SelectStage stage ->
-            ( { model | currentStage = Just stage }, Cmd.none )
+            ( { model | currentStage = Just stage, stageMenuOpen = False }, Cmd.none )
 
         SelectChar char ->
             ( { model | currentCharacter = Just char }, Cmd.none )
 
+        ToggleStageMenu ->
+            ( { model | stageMenuOpen = not model.stageMenuOpen }, Cmd.none )
+
         NoOp ->
             ( model, Cmd.none )
 
+        Back ->
+            ( if model.currentCharacter /= Nothing then
+                { model | currentCharacter = Nothing, stageMenuOpen = False }
+
+              else
+                { model | currentStage = Nothing, stageMenuOpen = False }
+            , Cmd.none
+            )
+
         Reset ->
-            ( { model | currentStage = Nothing, currentCharacter = Nothing }, Cmd.none )
+            ( { model | currentStage = Nothing, currentCharacter = Nothing, stageMenuOpen = False }, Cmd.none )
 
 
 
@@ -67,215 +93,259 @@ subscriptions _ =
 -- view
 
 
+maxContentWidth : Int
+maxContentWidth =
+    480
+
+
+charIconSize : Int
+charIconSize =
+    52
+
+
+stageIconWidth : Int
+stageIconWidth =
+    120
+
+
+stageIconHeight : Int
+stageIconHeight =
+    105
+
+
 view : Model -> Html Msg
 view model =
     Element.layout
         [ Background.color black
+        , Font.color white
+        , width fill
+        , height fill
         ]
     <|
-        row
-            [ centerX
-            , centerY
-            , spacing 3
+        el
+            [ width fill
+            , height fill
             ]
-            [ case model.currentStage of
-                Nothing ->
-                    viewStageSelect model
+        <|
+            column
+                [ centerX
+                , alignTop
+                , width (fill |> maximum maxContentWidth)
+                , paddingEach { top = 32, bottom = 24, left = 16, right = 16 }
+                , spacing 24
+                ]
+                [ case model.currentStage of
+                    Nothing ->
+                        viewStageSelect model
 
-                Just stage ->
-                    case model.currentCharacter of
-                        Nothing ->
-                            viewCharacterSelect stage
+                    Just stage ->
+                        case model.currentCharacter of
+                            Nothing ->
+                                viewCharacterSelect stage
 
-                        Just char ->
-                            viewKillPcts stage char
+                            Just char ->
+                                viewKillPcts model.stageMenuOpen stage char
+                ]
+
+
+header : Bool -> String -> Element Msg
+header canGoBack title =
+    column
+        [ width fill
+        , spacing 12
+        ]
+        [ row
+            [ width fill ]
+            [ if canGoBack then
+                navButton Back "‹ Back"
+
+              else
+                el [ width (px 72) ] none
+            , el
+                [ centerX
+                , Font.extraBold
+                , Font.italic
+                , Font.size 20
+                ]
+                (text title)
+            , el [ width (px 72) ] none
             ]
+        , el
+            [ width fill
+            , height (px 2)
+            , Background.color white
+            ]
+            none
+        ]
 
 
+stageSwitcherHeader : Bool -> Types.Stage -> Element Msg
+stageSwitcherHeader stageMenuOpen stage =
+    let
+        makeStageOption s =
+            iconButton (SelectStage s) 76 66 (Resources.stageImgPath s) (Types.stageToString s)
+    in
+    column
+        [ width fill
+        , spacing 12
+        ]
+        [ row
+            [ width fill ]
+            [ navButton Back "‹ Back"
+            , Input.button
+                [ centerX ]
+                { onPress = Just ToggleStageMenu
+                , label =
+                    el
+                        [ Font.extraBold
+                        , Font.italic
+                        , Font.size 20
+                        ]
+                        (text <|
+                            Types.stageToString stage
+                                ++ (if stageMenuOpen then
+                                        " ▲"
+
+                                    else
+                                        " ▼"
+                                   )
+                        )
+                }
+            , el [ width (px 72) ] none
+            ]
+        , el
+            [ width fill
+            , height (px 2)
+            , Background.color white
+            ]
+            none
+        , if stageMenuOpen then
+            wrappedRow
+                [ spacing 8
+                , centerX
+                ]
+                (L.map makeStageOption <| L.filter ((/=) stage) allStages)
+
+          else
+            none
+        ]
+
+
+navButton : Msg -> String -> Element Msg
+navButton msg label =
+    Input.button
+        [ Font.size 15
+        , Font.semiBold
+        , Background.color grey
+        , Border.rounded 8
+        , Border.width 1
+        , Border.color lightGrey
+        , paddingXY 12 10
+        ]
+        { onPress = Just msg
+        , label = text label
+        }
+
+
+viewStageSelect : Model -> Element Msg
 viewStageSelect model =
     let
         makeStageImg stage =
-            image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectStage stage
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.stageImgPath stage
-                , description = Types.stageToString stage
-                }
+            iconButton (SelectStage stage)
+                stageIconWidth
+                stageIconHeight
+                (Resources.stageImgPath stage)
+                (Types.stageToString stage)
     in
     column
         [ centerX
-        , centerY
-        , spacing 20
+        , spacing 24
+        , width fill
         ]
-        [ el
-            [ Font.extraBold
-            , Font.color white
-            , centerX
-            , above <|
-                el
-                    [ centerX
-                    , Font.italic
-                    , moveDown 10
-                    ]
-                    (text "Choose a stage")
-            ]
-            (text "______________________")
-        , row
-            [ spacing 10
+        [ header False "Choose a Stage"
+        , wrappedRow
+            [ spacing 12
             , centerX
             ]
-            [ makeStageImg Battlefield
-            , makeStageImg Dreamland
-            , makeStageImg FinalDestination
-            ]
-        , row
-            [ spacing 10
-            , centerX
-            ]
-            [ makeStageImg FountainOfDreams
-            , makeStageImg PokemonStadium
-            , makeStageImg YoshisStory
-            ]
+            (L.map makeStageImg allStages)
         ]
 
 
+viewCharacterSelect : Types.Stage -> Element Msg
 viewCharacterSelect stage =
     let
         makeCharImg char =
-            image
-                [ Background.color white
-                , Font.color white
-                , Border.rounded 3
-                , Events.onClick <| SelectChar char
-                , scale 1.1
-                , padding 1
-                ]
-                { src = Resources.charIconPath char
-                , description = Types.characterToString char
-                }
+            iconButton (SelectChar char)
+                charIconSize
+                charIconSize
+                (Resources.charIconPath char)
+                (Types.characterToString char)
+
+        allChars =
+            [ Mario
+            , DrMario
+            , Luigi
+            , Bowser
+            , Peach
+            , Yoshi
+            , DonkeyKong
+            , CaptainFalcon
+            , Ganondorf
+            , Falco
+            , Fox
+            , Ness
+            , IceClimbers
+            , Kirby
+            , Samus
+            , Zelda
+            , Sheik
+            , Link
+            , YoungLink
+            , Pichu
+            , Pikachu
+            , JigglyPuff
+            , Mewtwo
+            , MrGameAndWatch
+            , Marth
+            , Roy
+            ]
     in
     column
         [ centerX
-        , centerY
-        , spacing 20
+        , spacing 24
+        , width fill
         ]
-        [ el
-            [ Font.extraBold
-            , Font.color white
-            , centerX
-            , above <|
-                el
-                    [ centerX
-                    , Font.italic
-                    , moveDown 10
-                    ]
-                    (text "Choose a character")
-            ]
-            (text "______________________")
-        , row
+        [ header True (Types.stageToString stage)
+        , wrappedRow
             [ spacing 10
             , centerX
             ]
-            [ makeCharImg DrMario
-            , makeCharImg Mario
-            , makeCharImg Luigi
-            , makeCharImg Bowser
-            , makeCharImg Peach
-            , makeCharImg Yoshi
-            , makeCharImg DonkeyKong
-            , makeCharImg CaptainFalcon
-            , makeCharImg Ganondorf
-            ]
-        , row
-            [ spacing 10
-            , centerX
-            ]
-            [ makeCharImg Falco
-            , makeCharImg Fox
-            , makeCharImg Ness
-            , makeCharImg IceClimbers
-            , makeCharImg Kirby
-            , makeCharImg Samus
-            , makeCharImg Zelda
-            , makeCharImg Sheik
-            , makeCharImg Link
-            , makeCharImg YoungLink
-            ]
-        , row
-            [ spacing 10
-            , centerX
-            ]
-            [ makeCharImg Pichu
-            , makeCharImg Pikachu
-            , makeCharImg JigglyPuff
-            , makeCharImg Mewtwo
-            , makeCharImg MrGameAndWatch
-            , makeCharImg Marth
-            , makeCharImg Roy
-            ]
-        , image
-            [ Background.color white
-            , Font.color white
-            , Border.rounded 3
-            , centerX
-            , scale 0.75
-            , padding 1
-            , inFront <|
-                el
-                    [ Font.extraBold
-                    , Background.color grey
-                    , Border.rounded 3
-                    , Events.onClick Reset
-                    , alpha 0.65
-                    , centerX
-                    , centerY
-                    , paddingXY 2 20
-                    ]
-                    (text "Reset")
-            ]
-            { src = Resources.stageImgPath stage
-            , description = Types.stageToString stage
-            }
+            (L.map makeCharImg allChars)
+        , el [ centerX ] (navButton Reset "Reset")
         ]
 
 
-viewKillPcts stage char =
+viewKillPcts : Bool -> Types.Stage -> Types.Character -> Element Msg
+viewKillPcts stageMenuOpen stage char =
     column
         [ centerX
-        , centerY
-        , spacing 20
+        , spacing 24
+        , width fill
         ]
-        [ el
-            [ Font.extraBold
-            , Font.color white
-            , centerX
-            , above <|
-                el
-                    [ centerX
-                    , Font.italic
-                    , moveDown 10
-                    ]
-                    (text <| Types.stageToString stage)
-            ]
-            (text "______________________")
+        [ stageSwitcherHeader stageMenuOpen stage
         , image
-            [ Font.color white
-            , Border.rounded 3
-            , scale 1.1
-            , padding 1
-            , centerX
+            [ centerX
+            , width (px 80)
+            , height (px 80)
+            , Border.rounded 6
+            , Background.color white
             ]
             { src = Resources.charIconPath char
             , description = Types.characterToString char
             }
         , el
-            [ Font.color white
-            , centerX
+            [ centerX
+            , Font.size 17
             ]
             (case getStageCharacterKillPcts stage char of
                 Nothing ->
@@ -283,44 +353,46 @@ viewKillPcts stage char =
 
                 Just killPcts ->
                     column
-                        [ spacing 5 ]
+                        [ spacing 8 ]
                         (L.map
                             (\( moveName, killpct ) ->
                                 row
                                     [ centerX
-                                    , spacing 10
+                                    , spacing 16
+                                    , width (fill |> maximum 320)
                                     ]
-                                    [ column [] [ text moveName ]
-                                    , column [ Font.italic ] [ text <| String.fromInt killpct ++ "%" ]
+                                    [ el [ width fill ] (text moveName)
+                                    , el
+                                        [ Font.italic
+                                        , Font.bold
+                                        , alignRight
+                                        ]
+                                        (text <| String.fromInt killpct ++ "%")
                                     ]
                             )
                             (L.sortBy Tuple.second << Dict.toList <| killPcts)
                         )
             )
-        , image
-            [ Background.color white
-            , Font.color white
-            , Border.rounded 3
-            , centerX
-            , scale 0.75
-            , padding 1
-            , inFront <|
-                el
-                    [ Font.extraBold
-                    , Background.color grey
-                    , Border.rounded 3
-                    , Events.onClick Reset
-                    , alpha 0.65
-                    , centerX
-                    , centerY
-                    , paddingXY 2 20
-                    ]
-                    (text "Reset")
-            ]
-            { src = Resources.stageImgPath stage
-            , description = Types.stageToString stage
-            }
+        , el [ centerX ] (navButton Reset "Reset")
         ]
+
+
+iconButton : Msg -> Int -> Int -> String -> String -> Element Msg
+iconButton msg w h src description =
+    image
+        [ Background.color white
+        , Border.rounded 6
+        , Border.width 2
+        , Border.color grey
+        , Events.onClick msg
+        , pointer
+        , width (px w)
+        , height (px h)
+        , padding 2
+        ]
+        { src = src
+        , description = description
+        }
 
 
 black =
@@ -333,6 +405,10 @@ white =
 
 grey =
     rgb255 25 25 25
+
+
+lightGrey =
+    rgb255 90 90 90
 
 
 red =
@@ -385,7 +461,7 @@ encode model =
 
 decoder : D.Decoder Model
 decoder =
-    D.map2 Model
+    D.map2 (\stage char -> Model stage char False)
         (D.field "currentStage" <| D.nullable Types.stageDecoder)
         (D.field "currentCharacter" <| D.nullable Types.characterDecoder)
 
@@ -403,6 +479,7 @@ init flags =
         Err _ ->
             { currentStage = Nothing
             , currentCharacter = Nothing
+            , stageMenuOpen = False
             }
     , Cmd.none
     )
