@@ -224,7 +224,7 @@ stageSwitcherHeader stageMenuOpen stage =
                 [ spacing 8
                 , centerX
                 ]
-                (L.map makeStageOption allStages)
+                (L.map makeStageOption <| L.filter ((/=) stage) allStages)
 
           else
             none
