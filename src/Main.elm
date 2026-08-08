@@ -179,6 +179,11 @@ header canGoBack title =
         ]
 
 
+stageSwitcherOptions : Types.Stage -> List Types.Stage
+stageSwitcherOptions stage =
+    L.filter ((/=) stage) allStages
+
+
 stageSwitcherHeader : Bool -> Types.Stage -> Element Msg
 stageSwitcherHeader stageMenuOpen stage =
     let
@@ -224,7 +229,7 @@ stageSwitcherHeader stageMenuOpen stage =
                 [ spacing 8
                 , centerX
                 ]
-                (L.map makeStageOption <| L.filter ((/=) stage) allStages)
+                (L.map makeStageOption <| stageSwitcherOptions stage)
 
           else
             none
