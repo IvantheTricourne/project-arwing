@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "elm": "elm make src/Main.elm --output index.js --optimize || true",
-    "elm:live": "elm-live src/Main.elm --open --optimize || true",
+    "elm:live": "elm-live src/Main.elm --open --optimize -- --output=elm.js || true",
     "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
     "build": "node build.js",
     "start": "npm run elm & electron main.js",
