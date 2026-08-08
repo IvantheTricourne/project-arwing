@@ -89,4 +89,11 @@ suite =
                     |> Set.fromList
                     |> Set.size
                     |> Expect.equal (List.length allCharactersList)
+        , test "platformToInt is injective across all platforms" <|
+            \_ ->
+                allPlatforms
+                    |> List.map platformToInt
+                    |> Set.fromList
+                    |> Set.size
+                    |> Expect.equal (List.length allPlatforms)
         ]
